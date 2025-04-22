@@ -1,0 +1,25 @@
+import flet as ft
+i = 0
+
+def main(page: ft.Page):
+    page.title = "fl"
+
+    message_text = ft.Text(f'Вы кликнули: {i}')
+    output_text = ft.Text()
+    def iq(i):
+        i += 1
+        return (i)
+    def on_button_click(e):
+
+        output_text.value = iq(i)
+        page.update()  # Обновляем страницу
+    def on_button_click_2(e):
+        output_text.value = iq(0)
+        page.update()
+
+    button = ft.ElevatedButton("нажми на меня", on_click=on_button_click)
+    button_2 = ft.ElevatedButton("cброс", on_click=on_button_click_2)
+
+    page.add(message_text, button,button_2, output_text)  # Добавляем элементы на страницу
+
+ft.app(target=main)
